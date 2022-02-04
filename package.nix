@@ -6,7 +6,7 @@
 
 , buildEnv
 
-, perlPackages
+, pkgs
 
 , nixComponents
 , git
@@ -63,7 +63,7 @@ let
       ([
         nixComponents.nix-perl-bindings
         git
-      ] ++ (with perlPackages; [
+      ] ++ (with (import ./perl-packages.nix pkgs); [
         AuthenSASL
         CatalystActionREST
         CatalystAuthenticationStoreDBIxClass
@@ -110,6 +110,7 @@ let
         NetAmazonS3
         NetPrometheus
         NetStatsd
+        OIDCLite
         NumberBytesHuman
         PadWalker
         ParallelForkManager
